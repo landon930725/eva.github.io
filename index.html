@@ -1,1 +1,574 @@
-11111
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>你的姓名 · 你的职位 | 个人简介</title>
+    <!-- Google Fonts & 重置 -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f1f5f9;
+            font-family: 'Inter', sans-serif;
+            color: #0f172a;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .resume-card {
+            background: #ffffff;
+            border-radius: 2rem;
+            box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            transition: all 0.2s ease;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #0f2b3d 0%, #1b4a6e 100%);
+            padding: 2.5rem 2.5rem 2rem 2.5rem;
+            color: white;
+        }
+
+        .hero-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .hero-text h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-tagline {
+            display: inline-block;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(4px);
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            font-size: 1rem;
+            font-weight: 500;
+            margin-top: 0.5rem;
+        }
+
+        .hero-title {
+            font-size: 1.3rem;
+            font-weight: 500;
+            opacity: 0.9;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-info {
+            background: rgba(255,255,255,0.08);
+            border-radius: 1.5rem;
+            padding: 1rem 1.8rem;
+            backdrop-filter: blur(8px);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+            justify-content: center;
+        }
+
+        .contact-info a, .contact-info span {
+            color: white;
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: 0.2s;
+        }
+
+        .contact-info a:hover {
+            opacity: 0.8;
+            transform: translateY(-2px);
+        }
+
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1fr 0.9fr;
+            gap: 2rem;
+            padding: 2.5rem;
+        }
+
+        .section {
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #0f2b3d;
+            border-left: 5px solid #1b6b8f;
+            padding-left: 1rem;
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .section-title i {
+            color: #1b6b8f;
+            font-size: 1.3rem;
+        }
+
+        .exp-item {
+            margin-bottom: 1.8rem;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 1.2rem;
+        }
+
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .exp-company {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: #0f172a;
+        }
+
+        .exp-date {
+            font-size: 0.85rem;
+            color: #475569;
+            background: #f1f5f9;
+            padding: 0.2rem 0.7rem;
+            border-radius: 20px;
+        }
+
+        .exp-role {
+            font-weight: 600;
+            color: #1b6b8f;
+            margin: 0.3rem 0 0.5rem 0;
+            font-size: 0.95rem;
+        }
+
+        .exp-desc {
+            font-size: 0.92rem;
+            color: #334155;
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .exp-desc li {
+            margin-bottom: 0.4rem;
+            display: flex;
+            align-items: baseline;
+            gap: 0.5rem;
+        }
+
+        .exp-desc li i {
+            color: #1b6b8f;
+            font-size: 0.8rem;
+            margin-top: 0.2rem;
+            width: 1rem;
+        }
+
+        .skills-box {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.7rem;
+            margin: 1rem 0 1.2rem 0;
+        }
+
+        .skill-tag {
+            background: #eef2ff;
+            color: #1e3a5f;
+            padding: 0.35rem 1rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: 0.2s;
+        }
+
+        .skill-tag i {
+            margin-right: 0.3rem;
+            font-size: 0.8rem;
+        }
+
+        .skill-tag:hover {
+            background: #d9e6f2;
+            transform: scale(1.02);
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+        }
+
+        .stat-card {
+            background: #f8fafc;
+            flex: 1;
+            text-align: center;
+            padding: 1rem 0.5rem;
+            border-radius: 1.2rem;
+            border: 1px solid #e2edf2;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #1b6b8f;
+            line-height: 1.2;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: #475569;
+            font-weight: 500;
+        }
+
+        .trait-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 0.5rem;
+        }
+
+        .trait-item {
+            background: #f1f5f9;
+            border-radius: 2rem;
+            padding: 0.4rem 1.2rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #1e293b;
+        }
+
+        .quote-text {
+            font-style: italic;
+            background: #fefce8;
+            padding: 1rem;
+            border-radius: 1rem;
+            border-left: 4px solid #eab308;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+            color: #2d3e50;
+        }
+
+        .ai-showcase {
+            background: linear-gradient(110deg, #f0f9ff 0%, #e9f5f9 100%);
+            border-radius: 1.5rem;
+            padding: 1.2rem 1.5rem;
+            margin: 1rem 0 0.5rem 0;
+            border: 1px solid #cde3ed;
+        }
+
+        .ai-showcase h4 {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: #0f2b3d;
+        }
+
+        .ai-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .ai-list li {
+            display: flex;
+            gap: 0.8rem;
+            margin-bottom: 0.9rem;
+            font-size: 0.9rem;
+            align-items: flex-start;
+        }
+
+        .ai-list li i {
+            color: #1b6b8f;
+            font-size: 1rem;
+            margin-top: 0.15rem;
+            min-width: 1.2rem;
+        }
+
+        hr {
+            margin: 1rem 0;
+            border: none;
+            height: 1px;
+            background: linear-gradient(to right, #cbd5e1, transparent);
+        }
+
+        @media (max-width: 880px) {
+            .main-grid {
+                grid-template-columns: 1fr;
+                padding: 1.8rem;
+            }
+            .hero {
+                padding: 1.8rem;
+            }
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+            .contact-info {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.6rem;
+            }
+            .container {
+                margin: 1rem auto;
+            }
+            .stats {
+                flex-direction: row;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .stats {
+                flex-direction: column;
+            }
+            .hero-title {
+                font-size: 1rem;
+            }
+        }
+
+        footer {
+            background: #f1f5f9;
+            text-align: center;
+            padding: 1.2rem;
+            font-size: 0.8rem;
+            color: #475569;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .btn-ai-badge {
+            background: #0f172a;
+            color: white;
+            border-radius: 30px;
+            padding: 0.2rem 0.8rem;
+            font-size: 0.7rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            margin-left: 0.5rem;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="resume-card">
+        <!-- ========== 头部 Hero：修改姓名、职位、联系方式 ========== -->
+        <div class="hero">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>你的姓名 <span class="btn-ai-badge"><i class="fas fa-robot"></i> 你的标签</span></h1>
+                    <div class="hero-title">
+                        <i class="fas fa-vial"></i> 你的职位
+                        <span class="hero-tagline"><i class="fas fa-briefcase"></i> X年+ 相关经验</span>
+                    </div>
+                    <p style="max-width: 500px; opacity: 0.9; margin-top: 0.5rem;">✨ 一句话个人亮点 · 关键词 · 关键词</p>
+                </div>
+                <div class="contact-info">
+                    <span><i class="fas fa-map-marker-alt"></i> 所在城市</span>
+                    <span><i class="fas fa-envelope"></i> your.email@example.com</span>
+                    <span><i class="fab fa-github"></i> github.com/你的用户名</span>
+                    <span><i class="fas fa-phone-alt"></i> 13800000000</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 主体网格 -->
+        <div class="main-grid">
+            <!-- 左侧栏：工作经验 + 项目数据 + AI实战案例 -->
+            <div>
+                <!-- 工作经验 -->
+                <div class="section">
+                    <div class="section-title">
+                        <i class="fas fa-briefcase"></i> 
+                        <span>工作经验</span>
+                    </div>
+                    
+                    <!-- 复制 .exp-item 块可添加更多工作经历 -->
+                    <div class="exp-item">
+                        <div class="exp-header">
+                            <span class="exp-company"><i class="fas fa-building"></i> 公司名称 A</span>
+                            <span class="exp-date"><i class="far fa-calendar-alt"></i> 2020.01 – 至今 (X年)</span>
+                        </div>
+                        <div class="exp-role">你的职位</div>
+                        <ul class="exp-desc">
+                            <li><i class="fas fa-check-circle"></i> 描述你的主要工作职责与成果（建议用数据量化，如提升 XX%、完成 XX 个项目）。</li>
+                            <li><i class="fas fa-check-circle"></i> 描述第二项工作亮点。</li>
+                            <li><i class="fas fa-check-circle"></i> 描述第三项工作亮点。</li>
+                        </ul>
+                    </div>
+
+                    <div class="exp-item">
+                        <div class="exp-header">
+                            <span class="exp-company"><i class="fas fa-network-wired"></i> 公司名称 B</span>
+                            <span class="exp-date"><i class="far fa-calendar-alt"></i> 2017.06 – 2020.01 (X年)</span>
+                        </div>
+                        <div class="exp-role">你的职位</div>
+                        <ul class="exp-desc">
+                            <li><i class="fas fa-check-circle"></i> 描述你的主要工作职责与成果。</li>
+                            <li><i class="fas fa-check-circle"></i> 描述第二项工作亮点。</li>
+                            <li><i class="fas fa-check-circle"></i> 描述第三项工作亮点。</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 项目统计 + 质量数据 -->
+                <div class="section">
+                    <div class="section-title">
+                        <i class="fas fa-chart-line"></i>
+                        <span>关键数据 · 影响力</span>
+                    </div>
+                    <div class="stats">
+                        <div class="stat-card">
+                            <div class="stat-number">XX+</div>
+                            <div class="stat-label">数据标签 1</div>
+                            <small style="color:#5b6e8c;">补充说明</small>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">X年</div>
+                            <div class="stat-label">数据标签 2</div>
+                            <small style="color:#5b6e8c;">补充说明</small>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">XX%</div>
+                            <div class="stat-label">数据标签 3</div>
+                            <small style="color:#5b6e8c;">补充说明</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI提效实战案例 -->
+                <div class="section">
+                    <div class="section-title">
+                        <i class="fas fa-microchip"></i>
+                        <span>项目亮点 · 实战记录</span>
+                    </div>
+                    <div class="ai-showcase">
+                        <h4><i class="fas fa-bolt"></i> 你的项目/成果标题</h4>
+                        <ul class="ai-list">
+                            <li><i class="fas fa-code"></i> <strong>亮点项目 1</strong> — 描述项目背景、你的角色、使用的技术/方法，以及量化成果。</li>
+                            <li><i class="fas fa-robot"></i> <strong>亮点项目 2</strong> — 描述第二个代表性项目或成果。</li>
+                            <li><i class="fas fa-pen-fancy"></i> <strong>亮点项目 3</strong> — 描述第三个代表性项目或成果。</li>
+                        </ul>
+                        <div style="font-size:0.8rem; margin-top: 12px; color:#2c5a6e; border-top: 1px dashed #bdd9e6; padding-top: 8px;">
+                            <i class="fas fa-lightbulb"></i> 一句话总结你的专业方向或未来目标
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 右侧栏：技能 + 核心竞争力 + 综合素质 + 持续学习 -->
+            <div>
+                <!-- 专业技能模块 -->
+                <div class="section">
+                    <div class="section-title">
+                        <i class="fas fa-code-branch"></i>
+                        <span>技能栈</span>
+                    </div>
+                    <div class="skills-box">
+                        <span class="skill-tag"><i class="fas fa-clipboard-list"></i> 技能 1</span>
+                        <span class="skill-tag"><i class="fas fa-chalkboard-user"></i> 技能 2</span>
+                        <span class="skill-tag"><i class="fas fa-file-alt"></i> 技能 3</span>
+                        <span class="skill-tag"><i class="fas fa-bug"></i> 技能 4</span>
+                        <span class="skill-tag"><i class="fas fa-chart-simple"></i> 技能 5</span>
+                        <span class="skill-tag"><i class="fas fa-mobile-alt"></i> 技能 6</span>
+                        <span class="skill-tag"><i class="fas fa-robot"></i> 技能 7</span>
+                        <span class="skill-tag"><i class="fas fa-file-signature"></i> 技能 8</span>
+                    </div>
+                </div>
+
+                <!-- 核心竞争力 -->
+                <div class="section">
+                    <div class="section-title">
+                        <i class="fas fa-gem"></i>
+                        <span>核心竞争力</span>
+                    </div>
+                    <div class="trait-list">
+                        <span class="trait-item"><i class="fas fa-comments"></i> 特质 1</span>
+                        <span class="trait-item"><i class="fas fa-brain"></i> 特质 2</span>
+                        <span class="trait-item"><i class="fas fa-heart"></i> 特质 3</span>
+                        <span class="trait-item"><i class="fas fa-eye"></i> 特质 4</span>
+                        <span class="trait-item"><i class="fas fa-chart-line"></i> 特质 5</span>
+                        <span class="trait-item"><i class="fas fa-lightbulb"></i> 特质 6</span>
+                        <span class="trait-item"><i class="fas fa-users"></i> 特质 7</span>
+                        <span class="trait-item"><i class="fas fa-rocket"></i> 特质 8</span>
+                    </div>
+                    <hr>
+                    <div style="background: linear-gradient(110deg, #f0f9ff 0%, #e9f5f9 100%); padding: 1rem; border-radius: 1.2rem; margin: 0.5rem 0;">
+                        <i class="fas fa-microchip" style="color:#1b6b8f; font-size: 1.3rem; float: left; margin-right: 12px;"></i>
+                        <strong style="font-size: 1rem;">🏆 你的核心优势标题</strong><br>
+                        <span style="font-size: 0.85rem; color: #1e3a5f;">用 2-3 句话描述你最突出的竞争力或专业方向。</span>
+                    </div>
+                </div>
+
+                <!-- 综合素质 + 自我评价 -->
+                <div class="section">
+                    <div class="section-title">
+                        <i class="fas fa-user-check"></i>
+                        <span>综合素质 · 自我评价</span>
+                    </div>
+                    <div style="margin-bottom: 0.8rem;">
+                        <p style="margin-bottom: 0.5rem; font-weight: 500; background: #fef9e3; padding: 0.6rem 1rem; border-radius: 1rem;">
+                        <i class="fas fa-quote-left" style="margin-right: 6px; color:#d97706;"></i> 
+                        写一段简短的自我评价，概括你的性格特点、工作风格和职业追求。
+                        </p>
+                    </div>
+                    <ul style="list-style: none; margin-top: 10px;">
+                        <li style="margin-bottom: 0.7rem; display: flex; gap: 0.7rem;"><i class="fas fa-check-circle" style="color:#1b6b8f;"></i> <span><strong>维度 1</strong> — 描述你在该方面的优势与具体表现。</span></li>
+                        <li style="margin-bottom: 0.7rem; display: flex; gap: 0.7rem;"><i class="fas fa-check-circle" style="color:#1b6b8f;"></i> <span><strong>维度 2</strong> — 描述你在该方面的优势与具体表现。</span></li>
+                        <li style="margin-bottom: 0.7rem; display: flex; gap: 0.7rem;"><i class="fas fa-check-circle" style="color:#1b6b8f;"></i> <span><strong>维度 3</strong> — 描述你在该方面的优势与具体表现。</span></li>
+                        <li style="margin-bottom: 0.7rem; display: flex; gap: 0.7rem;"><i class="fas fa-check-circle" style="color:#1b6b8f;"></i> <span><strong>维度 4</strong> — 描述你在该方面的优势与具体表现。</span></li>
+                    </ul>
+                    <div class="quote-text" style="background: #eef2ff; border-left-color: #1b6b8f;">
+                        <i class="fas fa-medal"></i>  「一句有感染力的职业宣言或座右铭。」
+                    </div>
+                </div>
+
+                <!-- 持续学习 & 相关认证 -->
+                <div class="section">
+                    <div class="section-title">
+                        <i class="fas fa-graduation-cap"></i>
+                        <span>持续学习 · 专业认证</span>
+                    </div>
+                    <div style="display: flex; flex-wrap: wrap; gap: 0.8rem;">
+                        <span style="background: #e2e8f0; border-radius: 40px; padding: 0.2rem 1rem; font-size: 0.8rem;">📘 认证/课程 1</span>
+                        <span style="background: #e2e8f0; border-radius: 40px; padding: 0.2rem 1rem; font-size: 0.8rem;">🤖 认证/课程 2</span>
+                        <span style="background: #e2e8f0; border-radius: 40px; padding: 0.2rem 1rem; font-size: 0.8rem;">📊 认证/课程 3</span>
+                        <span style="background: #e2e8f0; border-radius: 40px; padding: 0.2rem 1rem; font-size: 0.8rem;">⚙️ 认证/课程 4</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <i class="fas fa-code"></i> 你的姓名 · 你的职位 | 个人标语 | 在线简历 2026 | 联系: your.email@example.com
+        </footer>
+    </div>
+</div>
+</body>
+</html>
