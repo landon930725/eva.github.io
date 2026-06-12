@@ -1,7 +1,5 @@
 # 个人简历 · GitHub Pages
 
-与 [Fenny1993 参考站](https://fenny0527.github.io/Fenny1993/) 相同设计的在线简历模板，内容需自行填写。
-
 ## 编辑内容
 
 打开 `index.html`，搜索以下占位符并替换为你的真实信息：
